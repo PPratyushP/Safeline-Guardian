@@ -8,6 +8,7 @@ const windowHeight = Dimensions.get('window').height;
 
 export default function Journal() {
   const [entry, setEntry] = useState('');
+  const [savedEntry, setSavedEntry] = useState('');
 
   const saveEntry = async () => {
     try {
@@ -15,19 +16,25 @@ export default function Journal() {
       alert('Entry saved!');
       setEntry(''); // Clear the text input
     } catch (error) {
-      // You can handle errors more specifically if you would like
       console.error('Failed to save the entry:', error);
+    }
+  };
+
+  const readEntry = async () => {
+    try {
+      const retrievedEntry = await AsyncStorage.getItem('@MyJournal:key');
+      if (retrievedEntry !== null) {
+        setSavedEntry(retrievedEntry);
+      } else {
+        alert('No entry found!');
+      }
+    } catch (error) {
+      console.error('Failed to read the entry:', error);
     }
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={{ flex: 0.5, justifyContent: 'center' }}>
-        <Text style={styles.title}>
-          Journal
-        </Text>
-      </View>
-
       <View style={{ flex: 8, justifyContent: 'center', alignItems: 'center' }}>
         <View style={{ height: windowHeight / 1.4, width: windowWidth / 1.02, justifyContent: 'center', backgroundColor: 'white', borderRadius: 40, textAlign: 'center' }}>
           <View style={styles.innerContainer}>
@@ -43,11 +50,22 @@ export default function Journal() {
           </View>
         </View>
       </View>
+      <Button title="Read Entry" onPress={readEntry} />
+      <Text style={styles.entryText}>{savedEntry}</Text>
     </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
+  entryText: {
+    color: 'white',
+    marginTop: 20,
+    padding: 10,
+    borderWidth: 1,
+    borderColor: '#ddd',
+    borderRadius: 3,
+  },
+  // ... (existing styles)
   container: {
     flex: 1,
     backgroundColor: 'black',
