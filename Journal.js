@@ -16,18 +16,14 @@ const windowHeight = Dimensions.get('window').height;
 export default function Journal() {
   const [entry, setEntry] = useState('');
 
-    const saveEntry = async = () => {
-      async () => { 
-      try {
-        await AsyncStorage.setItem(
-          '@MySuperStore1:key',
-          'I like to save it.',
-        );
-        alert('Entry saved!');
-        setEntry('');
-      } catch (error) {
-        alert('Entry not saved!');
-      }
+  const saveEntry = async () => {
+    try {
+      await AsyncStorage.setItem('@MyJournal:key', entry);
+      alert('Entry saved!');
+      setEntry(''); // Clear the textarea
+    } catch (error) {
+      // You can handle errors more specifically if you would like
+      console.error('Failed to save the entry:', error);
     }
   };
 
@@ -144,3 +140,4 @@ const styles = StyleSheet.create({
   },
   
 });
+
