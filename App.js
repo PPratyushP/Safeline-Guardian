@@ -1,35 +1,22 @@
-import { Text, SafeAreaView, StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-// You can import supported modules from npm
-import { Card } from 'react-native-paper';
+import HomeScreen from './Home';
+import JournalScreen from './Journal';
 
-// or any files within the Snack
-import AssetExample from './components/AssetExample';
+const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={styles.paragraph}>
-        Change code in the editor and watch it change on your phone! Save to get a shareable url.
-      </Text>
-      <Card>
-        <AssetExample />
-      </Card>
-    </SafeAreaView>
+    <NavigationContainer>
+      <Tab.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }} style ={{backgroundColor: 'black'}}>
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Journal" component={JournalScreen} />
+        <Tab.Screen name= "Communication"/>
+        <Tab.Screen name= "Mindfullness"/>
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: '#ecf0f1',
-    padding: 8,
-  },
-  paragraph: {
-    margin: 24,
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-});
