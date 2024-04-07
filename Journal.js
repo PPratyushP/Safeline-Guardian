@@ -21,38 +21,11 @@ export default function Journal() {
       </View>
 
       <View style={{ flex: 8, justifyContent: 'center', alignItems: 'center' }}>
-        <View style={{ height: windowHeight/1.4, width: windowWidth/1.02, justifyContent: 'center', backgroundColor: 'white', borderRadius: 40,}}>
-          <Text style = {{fontSize: 24, textAlign: 'center', font: 'Avenir-Roman',}}>
-            Welcome to safeline guardian. Remember you will never be alone. We have a great community and you will be supported
-          </Text>
-        </View>
+ 
       </View>
 
 
-      <View style={{ flex: 1, justifyContent: 'center', backgroundColor: '#000000', }}>
-        <View style={styles.navbar}>
-          <TouchableHighlight onPress={() => navigation.navigate('Journal')}>
-            <View style = {styles.navItem}>
-              <Text style= {styles.text}>Journal</Text>
-            </View>
-          </TouchableHighlight>
-          <TouchableHighlight>
-            <View style = {styles.navItem}>
-              <Text style= {styles.text}>Meditation</Text>
-            </View>
-          </TouchableHighlight>
-                    <TouchableHighlight>
-            <View style = {styles.navItem}>
-              <Text style= {styles.text}>Community</Text>
-            </View>
-          </TouchableHighlight>
-          <TouchableHighlight>
-            <View style = {styles.navItem}>
-              <Text style= {styles.text}>Call-line</Text>
-            </View>
-          </TouchableHighlight>
-        </View>
-      </View>
+
     </SafeAreaView>
   );
 }
