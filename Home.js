@@ -30,30 +30,7 @@ export default function Home({navigation}) {
       </View>
 
 
-      <View style={{ flex: 1, justifyContent: 'center', backgroundColor: '#000000', }}>
-        <View style={styles.navbar}>
-          <TouchableHighlight onPress={() => navigation.navigate('Journal')}>
-            <View style = {styles.navItem}>
-              <Text style= {styles.text}>Journal</Text>
-            </View>
-          </TouchableHighlight>
-          <TouchableHighlight>
-            <View style = {styles.navItem}>
-              <Text style= {styles.text}>Meditation</Text>
-            </View>
-          </TouchableHighlight>
-                    <TouchableHighlight>
-            <View style = {styles.navItem}>
-              <Text style= {styles.text}>Community</Text>
-            </View>
-          </TouchableHighlight>
-          <TouchableHighlight>
-            <View style = {styles.navItem}>
-              <Text style= {styles.text}>Call-line</Text>
-            </View>
-          </TouchableHighlight>
-        </View>
-      </View>
+     
     </SafeAreaView>
   );
 }
@@ -71,22 +48,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 
-  navbar: {
-    flexDirection: 'row',
-    width: windowWidth,
-    justifyContent: 'space-around',
-    borderWidth: 0.5,
-    borderTopColor: '#F5F5F5',
-  },
 
-  navItem: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
-  },
-
-  text: {
-    color: 'white',
-  }
   
 });
